@@ -39,7 +39,6 @@ module riscvmulti (
     reg [31:0] rs1; 
     reg [31:0] rs2; 
 
-    // ALU inputs
     wire [31:0] SrcA = rs1;
     wire [31:0] SrcB = isALUreg | isBranch ? rs2 : Iimm;
     wire [ 4:0] shamt  = isALUreg ? rs2[4:0] : instr[24:20]; 
@@ -73,8 +72,6 @@ module riscvmulti (
             default: LoadDataProcessed = memReadShifted;
         endcase
     end
-
-    // --- FSM e Atribuições ---
 
     localparam FETCH_INSTR = 0;
     localparam WAIT_INSTR  = 1;
